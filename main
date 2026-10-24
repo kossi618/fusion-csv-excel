@@ -1,0 +1,54 @@
+from pathlib import Path
+import pandas as pd
+
+
+def lire_fichiers(dossier):
+    d=Path("document")
+    frames = []
+    for f in d.iterdir():
+        if f.suffix == ".csv":
+            frames.append(pd.read_csv(f))
+        elif f.suffix == ".xlsx":
+            frames.append(pd.read_excel(f))
+    return frames
+def harmoniser_colonnes(df):
+    # "  Nom " -> "nom", "Date Naissance" -> "date_naissance"
+    df.columns = (
+        df.columns.str.strip()
+        .str.lower()
+        .str.replace(" ", "_")
+    )
+    return df
+
+
+def nettoyer(df):
+    df = df.dropna(how="all").copy()         # lignes totalement vides
+    # nettoyer les espaces dans les textes
+    for col in df.select_dtypes(include=["object", "string"]).columns:
+        df[col] = df[col].str.strip()
+    # convertir les colonnes de dates
+    for col in df.columns:
+        if "date" in col:
+            df[col] = pd.to_datetime(df[col], errors="coerce", dayfirst=True)
+    return df
+
+
+if __name__ == "__main__":
+    frames = lire_fichiers("donnees")
+    frames = [nettoyer(harmoniser_colonnes(df)) for df in frames]
+
+    total = pd.concat(frames, ignore_index=True)
+    avant = len(total)
+    total = total.drop_duplicates()
+    apres = len(total)
+
+    total.to_excel("resultat.xlsx", index=False)
+
+    print(f"Fichiers lus : {len(frames)}")
+    print(f"Lignes avant nettoyage : {avant}")
+    print(f"Doublons supprimés : {avant - apres}")
+    print(f"Lignes finales : {apres}")
+    print("Fichier créé : resultat.xlsx")
+
+    
+    
