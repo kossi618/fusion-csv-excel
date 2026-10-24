@@ -21,7 +21,7 @@ python fusion.py
 3 fichiers lus, 52 lignes -> 19 doublons supprimés -> 33 lignes finales
 
 ## Besoin d'un script sur mesure ?
-Contactez-moi : (assekissalembo@gmail.com)
+Contactez-moi : Contactez-moi via mon profil GitHub
 
 
 
