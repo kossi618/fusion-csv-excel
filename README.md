@@ -18,4 +18,5 @@ python fusion.py
 3 fichiers lus, 52 lignes -> 19 doublons supprimés -> 33 lignes finales
 
 ## Besoin d'un script sur mesure ?
-Contactez-moi : (ton email ou ton profil Fiverr/Malt)
+Contactez-moi : (assekissalembo@gmail.com)
+
