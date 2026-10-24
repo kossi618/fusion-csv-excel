@@ -19,4 +19,6 @@ python fusion.py
 
 ## Besoin d'un script sur mesure ?
 Contactez-moi : (assekissalembo@gmail.com)
+<img width="635" height="410" alt="Capture d&#39;écran 2026-10-24 102304" src="https://github.com/user-attachments/assets/4f6fade0-3039-492d-9b9d-d27fe8c054b9" />
+
 
